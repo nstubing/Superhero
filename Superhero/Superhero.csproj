@@ -205,11 +205,19 @@
     <Compile Include="Migrations\201807241526487_initialMigration.Designer.cs">
       <DependentUpon>201807241526487_initialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807241902033_fixedModelName.cs" />
+    <Compile Include="Migrations\201807241902033_fixedModelName.Designer.cs">
+      <DependentUpon>201807241902033_fixedModelName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807241914073_AddedID.cs" />
+    <Compile Include="Migrations\201807241914073_AddedID.Designer.cs">
+      <DependentUpon>201807241914073_AddedID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Superhero.cs" />
+    <Compile Include="Models\Superheroes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -272,10 +280,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Super\Create.cshtml" />
+    <Content Include="Views\Super\Index.cshtml" />
     <Content Include="Views\Super\Delete.cshtml" />
+    <Content Include="Views\Super\Create.cshtml" />
     <Content Include="Views\Super\Edit.cshtml" />
-    <Content Include="Views\Super\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,6 +304,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807241526487_initialMigration.resx">
       <DependentUpon>201807241526487_initialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807241902033_fixedModelName.resx">
+      <DependentUpon>201807241902033_fixedModelName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807241914073_AddedID.resx">
+      <DependentUpon>201807241914073_AddedID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

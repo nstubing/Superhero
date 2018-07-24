@@ -13,24 +13,57 @@ namespace Superhero.Controllers
         // GET: Super
         public ActionResult Index()
         {
-            return View();
+            return View(db.Superheroes);
         }
 
         public ActionResult Create()
+        { 
+            return View();
+        }
+        public ActionResult Delete(int ID)
+        {
+            var thisSuper = db.Superheroes.Where(s => s.ID == ID).FirstOrDefault();
+            return View(thisSuper);
+        }
+        public ActionResult Edit(int ID)
+        {
+            var thisSuper = db.Superheroes.Where(s => s.ID == ID).FirstOrDefault();
+            return View(thisSuper);
+        }
+        public ActionResult List()
         {
             ViewBag.SuperHeroID = new SelectList(db.Superheroes, "Name", "alterEgo", "superHeroAbility", "secondSuperHeroAbility", "catchphrase");
             return View();
         }
-        public ActionResult Delete()
+
+        [HttpPost]
+        public ActionResult Create([Bind(Include = "Name,alterEgo,superHeroAbility,secondSuperHeroAbility,catchphrase")]Superheroes superhero)
         {
-            ViewBag.SuperHeroID = new SelectList(db.Superheroes);
-            return View();
+            db.Superheroes.Add(superhero);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
-        public ActionResult Edit()
+
+        public ActionResult DeleteThis(int ID)
         {
-            ViewBag.SuperHeroID = new SelectList(db.Superheroes, "Name","alterEgo", "superHeroAbility", "secondSuperHeroAbility", "catchphrase");
-            return View();
+            var superDelete = db.Superheroes.Where(s => s.ID == ID).FirstOrDefault();
+            db.Superheroes.Remove(superDelete);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
-        public ActionLIst List()
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "ID,Name,alterEgo,superHeroAbility,secondSuperHeroAbility,catchphrase")]Superheroes superhero)
+        {
+            var thisSuper = db.Superheroes.Where(s => s.ID == superhero.ID).FirstOrDefault();
+            thisSuper.Name = superhero.Name;
+            thisSuper.alterEgo = superhero.alterEgo;
+            thisSuper.superHeroAbility = superhero.superHeroAbility;
+            thisSuper.secondSuperHeroAbility = superhero.secondSuperHeroAbility;
+            thisSuper.catchphrase = superhero.catchphrase;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
