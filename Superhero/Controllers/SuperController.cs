@@ -64,6 +64,11 @@ namespace Superhero.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Details(int ID)
+        {
+            var thisSuper = db.Superheroes.Where(s => s.ID == ID);
+            return View(thisSuper);
+        }
 
     }
 }
